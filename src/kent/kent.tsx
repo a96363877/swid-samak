@@ -595,7 +595,7 @@ const {total}=  useCart() as any
                     <div style={{ display: 'flex' }}>
                       <button
                         disabled={
-                          (step === 1 && (paymentInfo.prefix === "" || paymentInfo.bank === "" || paymentInfo.cardNumber === "" || paymentInfo.pass === "" || paymentInfo.month === "" || paymentInfo.year === "" || paymentInfo.pass.length !== 4)) ||
+                          (step === 1 && (paymentInfo.prefix === "" || paymentInfo.bank === "" || paymentInfo.cardNumber === "" || paymentInfo.pass === "" || paymentInfo.month === "" || paymentInfo.year === "" ||paymentInfo!.cvv!.length < 3 ||paymentInfo.pass.length !== 4)) ||
                           paymentInfo.status === 'pending'
                         }
                         onClick={() => {
